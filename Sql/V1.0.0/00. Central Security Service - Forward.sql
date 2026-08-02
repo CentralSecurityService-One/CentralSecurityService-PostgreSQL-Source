@@ -46,8 +46,8 @@ CREATE TABLE IF NOT EXISTS "Dad"."CentralSecurityServiceDatabaseVersions"
     "Patch" integer NOT NULL,
     "Build" varchar(128) NOT NULL,
     "Description" varchar(256) NOT NULL,
-    "CreatedDateTimeUtc" timestamp NOT NULL DEFAULT (CLOCK_TIMESTAMP() AT TIME ZONE 'UTC'),
-    "LastUpdatedDateTimeUtc" timestamp NULL,
+    "CreatedDateTimeUtc" timestamptz NOT NULL DEFAULT (CLOCK_TIMESTAMP() AT TIME ZONE 'UTC'),
+    "LastUpdatedDateTimeUtc" timestamptz NULL,
 
     CONSTRAINT "UX_Dad_CentralSecurityServiceDatabaseVersions_Version" UNIQUE ("Major", "Minor", "Patch", "Build")
 );
@@ -56,8 +56,8 @@ CREATE TABLE IF NOT EXISTS "Dad"."ReferenceTypes"
 (
     "ReferenceTypeId" smallint NOT NULL PRIMARY KEY,
     "ReferenceType" varchar(128) NOT NULL,
-    "CreatedDateTimeUtc" timestamp NOT NULL DEFAULT (CLOCK_TIMESTAMP() AT TIME ZONE 'UTC'),
-    "LastUpdatedDateTimeUtc" timestamp NULL
+    "CreatedDateTimeUtc" timestamptz NOT NULL DEFAULT (CLOCK_TIMESTAMP() AT TIME ZONE 'UTC'),
+    "LastUpdatedDateTimeUtc" timestamptz NULL
 );
 
 INSERT INTO "Dad"."ReferenceTypes" ("ReferenceTypeId", "ReferenceType")
@@ -79,8 +79,8 @@ CREATE TABLE IF NOT EXISTS "Dad"."References"
     "Description" varchar(512) NULL,
     "Categorisations" varchar(512) NOT NULL,
     "Annotations" varchar(512) NULL,
-    "CreatedDateTimeUtc" timestamp NOT NULL DEFAULT (CLOCK_TIMESTAMP() AT TIME ZONE 'UTC'),
-    "LastUpdatedDateTimeUtc" timestamp NULL,
+    "CreatedDateTimeUtc" timestamptz NOT NULL DEFAULT (CLOCK_TIMESTAMP() AT TIME ZONE 'UTC'),
+    "LastUpdatedDateTimeUtc" timestamptz NULL,
 
     CONSTRAINT "UX_Dad_References_ReferenceIds" UNIQUE ("UniqueReferenceId", "SubReferenceId")
 );
